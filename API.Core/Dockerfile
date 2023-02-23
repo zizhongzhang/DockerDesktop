@@ -11,10 +11,10 @@ COPY ["API.Core/API.Core.csproj", "API.Core/"]
 RUN dotnet restore "API.Core/API.Core.csproj"
 COPY . .
 WORKDIR "/src/API.Core"
-RUN dotnet build "API.Core.csproj" -c Release -o /app/build
+RUN dotnet build "API.Core.csproj" -c Debug -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "API.Core.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "API.Core.csproj" -c Debug -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
