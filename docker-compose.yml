@@ -1,0 +1,21 @@
+# this does not work with multi platform
+version: '3.8'
+services:
+  mvc:
+    image: webframework/dev
+    build:
+        context: .
+        dockerfile: ./Web.Framework/Dockerfile
+        args:
+          - source=Web.Framework/obj/Docker/publish
+    ports:
+      - '5000:80'
+  api:
+    image: apicore/dev
+    ports:
+      - 5001:80
+    build:
+        context: .
+        dockerfile: ./API.Core/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
