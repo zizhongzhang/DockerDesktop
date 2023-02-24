@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System.Collections.Specialized;
+using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Web.Mvc;
 
@@ -25,7 +27,7 @@ namespace Web.Framework.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = ConfigurationManager.AppSettings["complex:setting2"];
 
             return View();
         }

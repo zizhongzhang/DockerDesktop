@@ -1,0 +1,10 @@
+{
+  "appSettings": {
+    "setting1": "value1",
+    "setting2": "value2",
+    "complex": {
+      "setting1": "complex:value1",
+      "setting2": "complex:value2"
+    }
+  }
+}
