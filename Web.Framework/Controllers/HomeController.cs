@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
+using System.Net.Http;
 using System.Web.Mvc;
 
 namespace Web.Framework.Controllers
@@ -15,7 +13,12 @@ namespace Web.Framework.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var httpClient = new HttpClient()
+            {
+                BaseAddress = new System.Uri(ConfigurationManager.AppSettings["APIService"])
+            };
+            var response = httpClient.GetStringAsync("home").Result;
+            ViewBag.Message = response;
 
             return View();
         }
